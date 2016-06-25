@@ -45,13 +45,13 @@ When the container starts or you `manually rebuild the html content`_ it will `a
 .. _bootswatch repository: https://github.com/thomaspark/bootswatch
 .. _bootstrap: http://getbootstrap.com/
 .. _docker compose: https://docs.docker.com/compose/
-.. _manually rebuild the html content: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/containerfiles/start-container.sh#L16-17
-.. _automatically build: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/containerfiles/start-container.sh#L22-L42
+.. _manually rebuild the html content: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/a6031459946347538b188a776aea283c29dd0f0b/containerfiles/start-container.sh#L16-17
+.. _automatically build: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/a6031459946347538b188a776aea283c29dd0f0b/containerfiles/start-container.sh#L22-45
 .. _my blog: http://jaypjohnson.com
 .. _jayjohnson/sphinx-bootstrap: https://hub.docker.com/r/jayjohnson/sphinx-bootstrap/
 .. _Google Analytics Tracking Code: https://support.google.com/analytics/answer/1008080?hl=en
-.. _ENV_GOOGLE_ANALYTICS_CODE : https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/4c5cddf0b9edc4bee0ff3d673f5d7dd16a8336c5/docker/sphinx-bootstrap/Dockerfile#L47
-.. _automatically installed into the default html layout: https://github.com/jay-johnson/docker-sphinx-bootstrap/4c5cddf0b9edc4bee0ff3d673f5d7dd16a8336c5/docker/sphinx-bootstrap/containerfiles/start-container.sh#L13-L14
+.. _ENV_GOOGLE_ANALYTICS_CODE: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/a6031459946347538b188a776aea283c29dd0f0b/Dockerfile#L47
+.. _automatically installed into the default html layout: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/a6031459946347538b188a776aea283c29dd0f0b/containerfiles/start-container.sh#L13-14
 
 Getting Started
 ---------------
@@ -213,11 +213,11 @@ Inside the ``websphinx`` container I included a deploy + rebuild script you can 
 Rebuilding HTML content without restarting the docker container
 ---------------------------------------------------------------
 
-I added a file that handles converting the ``rst`` files into html without a container restart. To rebuild the content for a new revision or deployment run:
+I added a rebuild-html.sh_ script that handles converting the ``rst`` files into html without a container restart. To rebuild the content for a new revision or deployment just run:
 
 ::
 
-     ./rebuild-html.sh 
+     $ ./rebuild-html.sh 
      Rebuilding HTML with command: /root/containerfiles/deploy-new-content.sh
      Done rebuilding html
      $ 
@@ -254,10 +254,10 @@ Bootstrap v3.1.0+ is licensed under the MIT license.
 
 
 .. _repository: https://github.com/jay-johnson/docker-sphinx-bootstrap
-.. _sphinx-bootstrap : https://hub.docker.com/r/jayjohnson/sphinx-bootstrap
-.. _start.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/containerfiles/start.sh
+.. _sphinx-bootstrap: https://hub.docker.com/r/jayjohnson/sphinx-bootstrap
+.. _start.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/start.sh
 .. _start_container.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/containerfiles/start-container.sh
-.. _properties.sh : https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/properties.sh
+.. _properties.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/properties.sh
 .. _sphinx-ready source: https://github.com/ryan-roemer/sphinx-bootstrap-theme/tree/master/demo
-
+.. _rebuild-html.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/rebuild-html.sh
 
