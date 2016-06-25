@@ -1,0 +1,7 @@
+registry="docker.io"
+maintainer="jayjohnson"
+basename="centos7"
+imagename="sphinx-bootstrap"
+ENV_DEFAULT_ROOT_VOLUME="/opt/blog"
+ENV_DOC_SOURCE_DIR="/opt/blog/repo/source"
+ENV_DOC_OUTPUT_DIR="/opt/blog/repo/release"
