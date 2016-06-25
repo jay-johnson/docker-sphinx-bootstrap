@@ -225,7 +225,7 @@ I added a rebuild-html.sh_ script that handles converting the ``rst`` files into
 Stop the Container
 ~~~~~~~~~~~~~~~~~~
 
-To stop the conatiner run:
+To stop the container run:
 
 ::
 
