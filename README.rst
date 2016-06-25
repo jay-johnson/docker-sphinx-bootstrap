@@ -32,7 +32,7 @@ Integrating with Google Search Console
 
 1. Automatic **sitemap.xml** creation
 
-When the container starts or you `manually rebuild the html content`_ it will `automatically build`_ a ``sitemap.xml`` from any files ending with a ``.rst`` extension in the repository's root directory. This file is stored in the environment varaible ``ENV_DOC_OUTPUT_DIR`` directory. This is handy when you want to integrate your site into the `Google Search Console`_ and it should look similar to: http://jaypjohnson.com/sitemap.xml
+When the container starts or you `manually rebuild the html content`_ it will `automatically build`_ a ``sitemap.xml`` from any files ending with a ``.rst`` extension in the repository's root directory. This file is stored in the environment variable ``ENV_DOC_OUTPUT_DIR`` directory. This is handy when you want to integrate your site into the `Google Search Console`_ and it should look similar to: http://jaypjohnson.com/sitemap.xml
 
 .. _reStructuredText Markup: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
 .. _python Sphinx bootstrap: https://github.com/ryan-roemer/sphinx-bootstrap-theme
@@ -195,7 +195,7 @@ Here is how mine looks after adding it to the ``index.rst``
 
 6. Deploy and Rebuild the html files
 
-Inside the ``websphinx`` container I included a deploy + rebuild script you can run from outside the container with:
+Inside the ``websphinx`` container I included a `deploy + rebuild script`_ you can run from outside the container with:
 
 ::
 
@@ -260,4 +260,5 @@ Bootstrap v3.1.0+ is licensed under the MIT license.
 .. _properties.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/properties.sh
 .. _sphinx-ready source: https://github.com/ryan-roemer/sphinx-bootstrap-theme/tree/master/demo
 .. _rebuild-html.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/rebuild-html.sh
+.. _deploy + rebuild script: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/1dea9c967848c3c69f31314af64cd84fbc097fc6/containerfiles/deploy-new-content.sh
 
