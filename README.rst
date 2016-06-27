@@ -25,14 +25,14 @@ Integrating with Google Analytics
 
 1. Set your `Google Analytics Tracking Code`_ to the ENV_GOOGLE_ANALYTICS_CODE_ environment variable before container creation
 
-During container startup the environment variable ``ENV_GOOGLE_ANALYTICS_CODE`` will be `automatically installed into the default html layout`_ on every page across your site
+   During container startup the environment variable ``ENV_GOOGLE_ANALYTICS_CODE`` will be `automatically installed into the default html layout`_ on every page across your site
 
 Integrating with Google Search Console
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Automatic **sitemap.xml** creation
 
-When the container starts or you `manually rebuild the html content`_ it will `automatically build`_ a ``sitemap.xml`` from any files ending with a ``.rst`` extension in the repository's root directory. This file is stored in the environment variable ``ENV_DOC_OUTPUT_DIR`` directory. This is handy when you want to integrate your site into the `Google Search Console`_ and it should look similar to: http://jaypjohnson.com/sitemap.xml
+   When the container starts or you `manually rebuild the html content`_ it will `automatically build`_ a ``sitemap.xml`` from any files ending with a ``.rst`` extension in the repository's root directory. This file is stored in the environment variable ``ENV_DOC_OUTPUT_DIR`` directory. This is handy when you want to integrate your site into the `Google Search Console`_ and it should look similar to: http://jaypjohnson.com/sitemap.xml
 
 .. _reStructuredText Markup: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
 .. _python Sphinx bootstrap: https://github.com/ryan-roemer/sphinx-bootstrap-theme
@@ -79,7 +79,9 @@ To build the container you can run ``build.sh`` that automatically sources the p
 
 Here is the full command:
 
-    :code:`docker build --rm -t <your name>/sphinx-bootstrap --build-arg registry=docker.io --build-arg maintainer=<your name> --build-arg imagename=sphinx-bootstrap .`
+::
+    
+    docker build --rm -t <your name>/sphinx-bootstrap --build-arg registry=docker.io --build-arg maintainer=<your name> --build-arg imagename=sphinx-bootstrap .
 
 
 Start the Container
@@ -113,24 +115,24 @@ Looking into the start.sh_ you can see that there are a few defaults taken from 
 Test the Container
 ~~~~~~~~~~~~~~~~~~
 
-1. Check the container is running with:
+#. Check the container is running with:
 
-::
+   ::
     
-    $ docker ps
-    CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS              PORTS               NAMES
-    d321c432272c        jayjohnson/sphinx-bootstrap   "/root/containerfiles"   9 minutes ago       Up 9 minutes                            sphinx-bootstrap
-    $
+       $ docker ps
+       CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS              PORTS               NAMES
+       d321c432272c        jayjohnson/sphinx-bootstrap   "/root/containerfiles"   9 minutes ago       Up 9 minutes                            sphinx-bootstrap
+       $
 
 
-2. If the container started and generated the html correctly there should be a ``sitemap.xml`` file:
+#. If the container started and generated the html correctly there should be a ``sitemap.xml`` file:
 
-::
+   ::
 
-    $ ls /opt/blog/repo/release/sitemap.xml 
-    /opt/blog/repo/release/sitemap.xml
-    $
-
+       $ ls /opt/blog/repo/release/sitemap.xml 
+       /opt/blog/repo/release/sitemap.xml
+       $
+   
 
 Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~
@@ -155,60 +157,60 @@ If you are looking to configure the composition and containers, here are the ava
 Want to add a new blog post?
 ----------------------------
 
-1. Open a new ``new-post.rst`` file in the ``source`` directory
+#. Open a new ``new-post.rst`` file in the ``source`` directory
 
-2. Add the following lines to the new ``new-post.rst`` file:
+#. Add the following lines to the new ``new-post.rst`` file:
 
-::
+   ::
 
-    ==================
-    This is a New Post
-    ==================
-
-    My first blog post
-
-
-3. Edit the ``index.rst`` file and find the ``Site Contents`` section
-
-4. Add a new line to ``Site Contents`` **toctree** section containing: ``new-post`` 
-
-Here is how mine looks after adding it to the ``index.rst``
-
-::
-
-    Site Contents
-    -------------
-
-    .. toctree::
-        :maxdepth: 2
-
-        new-post
-        python
-        work-history
-        contact
-        about
+       ==================
+       This is a New Post
+       ==================
+   
+       My first blog post
 
 
-.. note:: One nice feature of the sphinx framework is it will automatically label the dropdown link with the first **Title** section found inside the file.
+#. Edit the ``index.rst`` file and find the ``Site Contents`` section
 
-5. Save the ``index.rst`` file
+#. Add a new line to ``Site Contents`` **toctree** section containing: ``new-post`` 
 
-6. Deploy and Rebuild the html files
+   Here is how mine looks after adding it to the ``index.rst``
 
-Inside the ``websphinx`` container I included a `deploy + rebuild script`_ you can run from outside the container with:
+   ::
 
-::
+       Site Contents
+       -------------
 
-    $ docker exec -it websphinx /root/containerfiles/deploy-new-content.sh
+       .. toctree::
+           :maxdepth: 2
+   
+           new-post
+           python
+           work-history
+           contact
+           about
 
-7. Test the new post shows up in the site
 
-::
+   .. note:: One nice feature of the sphinx framework is it will automatically label the dropdown link with the first **Title** section found inside the file.
 
-    $ curl -s http://localhost:80/ | grep href | grep toctree | grep "New Post"
-    <li class="toctree-l1"><a class="reference internal" href="new-post.html">This is a New Post</a></li>
-    <li class="toctree-l1"><a class="reference internal" href="new-post.html">This is a New Post</a></li>
-    $
+#. Save the ``index.rst`` file
+
+#. Deploy and Rebuild the html files
+
+   Inside the ``websphinx`` container I included a `deploy + rebuild script`_ you can run from outside the container with:
+
+   ::
+
+       $ docker exec -it websphinx /root/containerfiles/deploy-new-content.sh
+
+#. Test the new post shows up in the site
+
+   ::
+
+       $ curl -s http://localhost:80/ | grep href | grep toctree | grep "New Post"
+       <li class="toctree-l1"><a class="reference internal" href="new-post.html">This is a New Post</a></li>
+       <li class="toctree-l1"><a class="reference internal" href="new-post.html">This is a New Post</a></li>
+       $
 
 Rebuilding HTML content without restarting the docker container
 ---------------------------------------------------------------
@@ -261,4 +263,5 @@ Bootstrap v3.1.0+ is licensed under the MIT license.
 .. _sphinx-ready source: https://github.com/ryan-roemer/sphinx-bootstrap-theme/tree/master/demo
 .. _rebuild-html.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/rebuild-html.sh
 .. _deploy + rebuild script: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/1dea9c967848c3c69f31314af64cd84fbc097fc6/containerfiles/deploy-new-content.sh
+
 

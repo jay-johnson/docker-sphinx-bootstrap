@@ -16,11 +16,7 @@ sed -i "s|GOOGLE_ANALYTICS_CODE|$ENV_GOOGLE_ANALYTICS_CODE|g" $ENV_DOC_SOURCE_DI
 echo "$(date +'%m-%d-%y %H:%M:%S') Building Sphinx Doc Source($ENV_DOC_SOURCE_DIR) Output($ENV_DOC_OUTPUT_DIR)" >> $log
 sphinx-build -b html $ENV_DOC_SOURCE_DIR $ENV_DOC_OUTPUT_DIR &>> $log
 
-echo "$(date +'%m-%d-%y %H:%M:%S') Configuring GA Code($ENV_GOOGLE_ANALYTICS_CODE) to File($ENV_DOC_OUTPUT_DIR/_templates/layout.html)" >> $log
-sed -i "s|GOOGLE_ANALYTICS_CODE|$ENV_GOOGLE_ANALYTICS_CODE|g" $ENV_DOC_OUTPUT_DIR/_templates/layout.html
-
 echo "$(date +'%m-%d-%y %H:%M:%S') Done Building Sphinx Docs" >> $log
-
 
 sitemap="$ENV_DOC_OUTPUT_DIR/sitemap.xml"
 echo "$(date +'%m-%d-%y %H:%M:%S') Building sitemap.xml for BaseDomain($ENV_BASE_DOMAIN) Path($sitemap)" >> $log
@@ -45,6 +41,19 @@ echo "</urlset>" >> $sitemap
 chmod 666 $sitemap
 
 popd &>> $log
+
+# Allow for post start actions like installing SEO per page
+postactions="$ENV_DEFAULT_ROOT_VOLUME/run_post_action_hooks.sh"
+echo "$(date +'%m-%d-%y %H:%M:%S') Looking for Post Start Actions Script($postactions)" >> $log
+
+if [ -e "$postactions" ]; then
+    echo "$(date +'%m-%d-%y %H:%M:%S') Running Post Start Actions($postactions)" >> $log
+    chmod 777 $postactions
+    $postactions &>> $log
+    echo "$(date +'%m-%d-%y %H:%M:%S') Done Running Post Start Actions($postactions)" >> $log
+else
+    echo "$(date +'%m-%d-%y %H:%M:%S') No Post Start Actions($postactions) to run" >> $log
+fi
 
 echo "$(date +'%m-%d-%y %H:%M:%S') Done Starting" >> $log
 
