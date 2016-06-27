@@ -1,6 +1,7 @@
 =========================
 Docker + Sphinx Bootstrap
 =========================
+Date: **2016-06-24**
 
 I built this repository_ for hosting my technical blog + resume + work portfolio. I containerized the sphinx-bootstrap_ repository so that on startup it will convert any ``rst`` files mounted from a host volume directory into themed, mobile-ready html. 
 
@@ -9,8 +10,6 @@ I use this repository for hosting and rendering ``rst`` as html on my blog:
 http://jaypjohnson.com
 
 Docker Hub Image: `jayjohnson/sphinx-bootstrap`_
-
-Date: **2016-06-24**
 
 .. role:: bash(code)
       :language: bash
@@ -45,13 +44,13 @@ Integrating with Google Search Console
 .. _bootswatch repository: https://github.com/thomaspark/bootswatch
 .. _bootstrap: http://getbootstrap.com/
 .. _docker compose: https://docs.docker.com/compose/
-.. _manually rebuild the html content: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/a6031459946347538b188a776aea283c29dd0f0b/containerfiles/start-container.sh#L16-17
-.. _automatically build: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/a6031459946347538b188a776aea283c29dd0f0b/containerfiles/start-container.sh#L22-45
+.. _manually rebuild the html content: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/2a752b96a7bcd378dbb207da1922c2e8997dc7ae/containerfiles/start-container.sh#L16-L17
+.. _automatically build: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/2a752b96a7bcd378dbb207da1922c2e8997dc7ae/containerfiles/start-container.sh#L21-L41
 .. _my blog: http://jaypjohnson.com
 .. _jayjohnson/sphinx-bootstrap: https://hub.docker.com/r/jayjohnson/sphinx-bootstrap/
 .. _Google Analytics Tracking Code: https://support.google.com/analytics/answer/1008080?hl=en
-.. _ENV_GOOGLE_ANALYTICS_CODE: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/a6031459946347538b188a776aea283c29dd0f0b/Dockerfile#L47
-.. _automatically installed into the default html layout: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/a6031459946347538b188a776aea283c29dd0f0b/containerfiles/start-container.sh#L13-14
+.. _ENV_GOOGLE_ANALYTICS_CODE: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/2a752b96a7bcd378dbb207da1922c2e8997dc7ae/Dockerfile#L47
+.. _automatically installed into the default html layout: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/2a752b96a7bcd378dbb207da1922c2e8997dc7ae/containerfiles/start-container.sh#L13-L14
 
 Getting Started
 ---------------
@@ -262,6 +261,6 @@ Bootstrap v3.1.0+ is licensed under the MIT license.
 .. _properties.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/properties.sh
 .. _sphinx-ready source: https://github.com/ryan-roemer/sphinx-bootstrap-theme/tree/master/demo
 .. _rebuild-html.sh: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/master/rebuild-html.sh
-.. _deploy + rebuild script: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/1dea9c967848c3c69f31314af64cd84fbc097fc6/containerfiles/deploy-new-content.sh
+.. _deploy + rebuild script: https://github.com/jay-johnson/docker-sphinx-bootstrap/blob/2a752b96a7bcd378dbb207da1922c2e8997dc7ae/containerfiles/deploy-new-content.sh
 
 
