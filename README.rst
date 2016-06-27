@@ -1,7 +1,6 @@
 =========================
 Docker + Sphinx Bootstrap
 =========================
-Date: **2016-06-24**
 
 I built this repository_ for hosting my technical blog + resume + work portfolio. I containerized the sphinx-bootstrap_ repository so that on startup it will convert any ``rst`` files mounted from a host volume directory into themed, mobile-ready html. 
 
@@ -10,6 +9,8 @@ I use this repository for hosting and rendering ``rst`` as html on my blog:
 http://jaypjohnson.com
 
 Docker Hub Image: `jayjohnson/sphinx-bootstrap`_
+
+Date: **2016-06-24**
 
 .. role:: bash(code)
       :language: bash
